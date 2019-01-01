@@ -1,0 +1,6 @@
+site_api_key.node.view:
+  path: '/page_json/{api_key}/{nid}'
+  defaults:
+    _controller: '\Drupal\site_api_key\Controller\ContentViewController::view'
+  requirements:
+    _permission: 'access content'

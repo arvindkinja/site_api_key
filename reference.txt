@@ -1,0 +1,17 @@
+README.txt:- Knwon information
+site_api_key.info.yml:-  Knwon information
+
+site_api_key.module:- Knwon information
+hook_form_FORM_ID_alter()
+Field syntex:- Referred buildForm() inside drupal core SiteInformationForm.php
+site_api_key_form_submit() reference https://www.drupal.org/forum/support/module-development-and-code-questions/2015-12-19/drupal-8-submit-handler
+
+Configuration setting:- https://www.drupal.org/docs/8/creating-custom-modules/defining-and-using-your-own-configuration-in-drupal-8
+
+Regular expression to validate whitespace:- https://stackoverflow.com/questions/1161708/php-detect-whitespace-between-strings
+
+Configration system:- https://www.drupal.org/docs/8/creating-custom-modules/defining-and-using-your-own-configuration-in-drupal-8
+
+To apply node dependency injection:- https://drupal.stackexchange.com/questions/232906/dependency-injection-to-load-node-data
+
+Drupal core node module

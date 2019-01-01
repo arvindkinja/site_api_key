@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Add additional field in the site information setting form to store site api key.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function site_api_key_form_system_site_information_settings_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+    // Get siteapikey configuration object
+    $config = \Drupal::config('siteapikey.settings');
+    $form['api_key_information'] = [
+      '#type' => 'details',
+      '#title' => t('API Key Information'),
+      '#open' => TRUE,
+    ];
+    $form['api_key_information']['site_api_key'] = [
+      '#type' => 'textfield',
+      '#title' => t('Site API Key'),
+      '#default_value' => $config->get('siteapikey'),
+      '#required' => TRUE,
+    ];
+
+    // Validation handler
+    $form['#validate'][] = 'site_api_key_form_validate';
+    // Update submit button text
+    $form['actions']['submit']['#value'] = t('Update Configuration');
+    // Added additional submit handler for form
+    $form['actions']['submit']['#submit'][]  = 'site_api_key_form_submit';
+}
+
+/**
+ * site_api_key_form_validate().
+ * Validate api key value which is submitted by user.
+ */
+function site_api_key_form_validate($form, FormStateInterface $form_state) {
+  // Validate site_api_key and check whitespaces in the key.
+  if (preg_match('/\s/',$form_state->getValue('site_api_key'))) {
+    $form_state->setErrorByName('site_api_key', t("Site api key should not contains whitespace."));
+  }
+}
+
+/**
+ * site_api_key_form_submit().
+ * Store api key value in site configuration system.
+ */
+function site_api_key_form_submit($form, FormStateInterface $form_state) {
+  //Get siteapikey configuration object
+  $config = \Drupal::service('config.factory')->getEditable('siteapikey.settings');
+  $value = $form_state->getValue('site_api_key');
+  // Set and save new siteapikey value.
+  $config->set('siteapikey', $value)->save();
+  // Display status message to user.
+  drupal_set_message(t('Site API Key has been saved with %value value', array('%value' => $value)));
+}

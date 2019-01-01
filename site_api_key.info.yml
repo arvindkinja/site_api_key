@@ -1,0 +1,5 @@
+name: Site API Key
+type: module
+description: Provide additional field to store site api Key in site information form.
+core: 8.x
+package: Custom
