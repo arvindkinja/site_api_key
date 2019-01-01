@@ -76,6 +76,11 @@ class ContentViewController implements ContainerInjectionInterface {
       throw new AccessDeniedHttpException();
     }
 
+    // Check the node is published or not
+    if ( ! $node->isPublished() ) {
+      throw new AccessDeniedHttpException();
+    }
+
     // Convert object in array
     $response = $node->toArray();
 
