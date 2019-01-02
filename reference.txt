@@ -15,3 +15,5 @@ Configration system:- https://www.drupal.org/docs/8/creating-custom-modules/defi
 To apply node dependency injection:- https://drupal.stackexchange.com/questions/232906/dependency-injection-to-load-node-data
 
 Drupal core node module
+
+Time to complete the module:- 7 hours approx.
