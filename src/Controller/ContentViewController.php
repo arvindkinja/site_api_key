@@ -54,10 +54,13 @@ class ContentViewController implements ContainerInjectionInterface {
   /**
    * Return json response for a given node ID.
    *
-   * @param $api_key String
-   *   The key of the site
-   * @param $nid
-   *   The ID of the node
+   * @param string $api_key
+   *   The key of the site.
+   * @param int $nid
+   *   The ID of the node.
+   *
+   * @return json
+   *   A json response of node based on node ID.
    */
   public function view($api_key, $nid) {
     // Get the site api key from the db.
